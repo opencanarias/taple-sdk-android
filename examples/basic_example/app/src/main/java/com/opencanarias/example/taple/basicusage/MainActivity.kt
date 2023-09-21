@@ -1,6 +1,5 @@
 package com.opencanarias.example.taple.basicusage
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
@@ -109,7 +108,7 @@ fun ContentApp(modifier: Modifier = Modifier, context: Context) {
                         listenAddr = listOf("/ip4/0.0.0.0/tcp/40040"),
                         keyDerivator = TapleKeyDerivator.ED25519,
                         privateKey = privateKey,
-                        knownNodes = listOf("/ip4/$nodeIp/tcp/$nodePort/p2p/$nodeP2P")
+                        knownNodes = remoteKnowsNodesMultiAddr
                     )
                     // Node initialization
                     try {
@@ -125,7 +124,7 @@ fun ContentApp(modifier: Modifier = Modifier, context: Context) {
                     try {
                         // Add Subject and preauthorize it
                         val handler = Handler(Looper.getMainLooper())
-                        api.addPreauthorizeSubject(governanceId, boostrapNodes)
+                        api.addPreauthorizeSubject(governanceId, remoteNodes)
 
                         job = CoroutineScope(Dispatchers.Default).launch {
                             // First we have to wait for the new subject notification
@@ -216,7 +215,7 @@ fun ContentApp(modifier: Modifier = Modifier, context: Context) {
                 // Although we have the subject, its data may not bet available yet. We should use the
                 // notification channel to detect when the subject has been really created. In this case,
                 // we need to wait for the newSubject notification
-                var id = ""
+                val id: String
                 while (true) {
                     when (node!!.receiveBlocking()) {
                         is TapleNotification.NewSubject -> {

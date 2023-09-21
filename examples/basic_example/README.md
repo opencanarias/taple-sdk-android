@@ -65,7 +65,7 @@ curl --location 'http://localhost:3000/api/event-requests' \
                             "op": "add",
                             "path": "/schemas/0",
                             "value": {
-                                "id": "MyNamespace",
+                                "id": "test",
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -99,7 +99,7 @@ curl --location 'http://localhost:3000/api/event-requests' \
                             "op": "add",
                             "path": "/policies/1",
                             "value": {
-                                "id": "MyNamespace",
+                                "id": "test",
                                 "approve": {
                                     "quorum": "MAJORITY"
                                 },
@@ -119,7 +119,7 @@ curl --location 'http://localhost:3000/api/event-requests' \
                                 "role": "CREATOR",
                                 "who": "ALL",
                                 "schema": {
-                                    "ID": "MyNamespace"
+                                    "ID": "test"
                                 }
                             }
                         }
@@ -130,6 +130,23 @@ curl --location 'http://localhost:3000/api/event-requests' \
     }
 }'
 ```
+
+Once we send petition to update the governance we need the *approval-request* ID of this petition to approve it. 
+
+```bash
+curl --location 'http://localhost:3000/api/approval-requests?status=Pending'
+```
+
+When we got this ID we can approve it replacing in the url the last part with the petition ID.
+
+```bash
+curl --location 'http://localhost:3000/api/approval-requests/[HERE GOES YOUR APPROVAL REQUEST ID]' \
+--request PATCH \
+--header 'Content-Type: application/json' \
+--data '{"state": "RespondedAccepted"}'
+```
+
+If we execute again the `curl --location 'http://localhost:3000/api/subjects'` we should be able to see that our *Governance* is now updated and with the configuration that we specified before.
 
 ## Mobile Demo
 

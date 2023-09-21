@@ -1,8 +1,7 @@
 package com.opencanarias.example.taple.basicusage
 
-var nodeIp = "192.168.1.58";
-var nodePort ="40040"
-var nodeP2P = "12D3KooWHHjN5vKSKeCWiBG3gHaDRDp6YzsEgu9iTesYqrWxAgFk"
-var governanceId = "Jh4MtgzgqNtwwsi2C3li8vqBL2AbMpfK9D57BxwvXB2w"
-var boostrapNodes = listOf<String>("EbwR0yYrCYpTzlN5i5GX_MtAbKRw5y2euv3TqiTgwggs")
+//IMPORTANT: The multiAddress needs the IP of the host machine
+var remoteKnowsNodesMultiAddr = listOf<String>("/ip4/192.168.1.105/tcp/50000/p2p/12D3KooWLXexpg81PjdjnrhmHUxN7U5EtfXJgr9cahei1SJ9Ub3B")
+var governanceId = "JsqZ9DR2x0G36pfhuAegO3lZXmYm6xSmgtjvKGDvL6ho"
+var remoteNodes = listOf<String>("EnyisBz0lX9sRvvV0H-BXTrVtARjUa0YDHzaxFHWH-N4")
 var schemaId = "test"
