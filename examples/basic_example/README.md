@@ -133,7 +133,7 @@ curl --location 'http://localhost:3000/api/event-requests' \
 
 ## Mobile Demo
 
-First, we need the `TapleSDK` *.aar* to our mobile project. We can achieve this by downloading it from the releases or building it ourselves, as shown in the main `README.md` of the project. Once we have this, we should put it inside the `libs` folder. It's important that if we use the debug version, we change the declararion in the `build.gradle.kts` file at the line 59 to match the release name of the *.aar*.
+First, we need the `TapleSDK` *.aar* to our mobile project. We can achieve this by downloading it from the releases or building it ourselves, as shown in the main `README.md` of the project. Once we have this, we should put it inside the `libs` folder. Depending on whether you compile the library or download it, you may need to adjust its name in the `build.gradle.kts` file.
 
 We need to configure the app for the current *Bootstrap Node* and Governance configuration. To do this, we will modify the `Config.kt` that is in this project.
 
