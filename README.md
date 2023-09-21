@@ -39,24 +39,28 @@ Building the library is optional. The library is distributed through [Github rel
   - Gradle
   - Android Studio (optional)
 
-### Cross compilation
+### Download
+Clone TAPLE FFI and TAPLE SDK Android. 
+```bash
+git clone https://github.com/opencanarias/taple-ffi
+git clone https://github.com/opencanarias/taple-sdk-android
+```
 
-Cross-compilation generates the TAPLE FFI library for the different supported architectures and the bindings for Kotlin.
+### Cross compilation
+Cross-compilation generates the TAPLE FFI library for the different supported architectures and the bindings for Kotlin. Check the [FFI repository](https://github.com/opencanarias/taple-ffi) in case you need to install additional dependencies. 
 
 ```bash
- git clone https://github.com/opencanarias/taple-ffi
- git clone https://github.com/opencanarias/taple-sdk-android
- cd taple-sdk-android/scripts
- ./setup.sh
- ./start.sh
+cd taple-sdk-android/scripts
+./setup.sh
+./start.sh
 ```
 The resulting artifacts are automatically copied to their corresponding location in the sdk folder.
 
 ### Lib generation
 
 ```bash
-$ cd ../sdk
-$ ./gradlew assemble
+cd ../sdk
+./gradlew assemble
 ```
 Once the process is finished, the resulting libraries will be available at *./TapleSDK/build/outputs/aar*.
 
