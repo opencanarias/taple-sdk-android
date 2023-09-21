@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TAPLE</string>
+    <string name="button_start">Start</string>
+    <string name="button_create_subject">Create Subject</string>
+    <string name="button_get">Get</string>
+    <string name="button_create_event">Create Event</string>
+    <string name="button_handler_event">Handler Event</string>
+</resources>
