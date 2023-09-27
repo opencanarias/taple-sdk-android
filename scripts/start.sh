@@ -4,10 +4,11 @@
 mode="release"
 
 # Architectures to compile. Comment on those you do not want to compile
-declare -A architectures
-architectures[aarch64]="arm64-v8a"
-architectures[x86_64]="x86_64"
-architectures[i686]="x86"
+architectures=()
+# architectures+=("rust_target android_target")
+architectures+=("aarch64-linux-android arm64-v8a")
+architectures+=("x86_64-linux-android x86_64")
+architectures+=("i686-linux-android x86")
 
 lib_name="libtaple_ffi.so"
 
@@ -19,8 +20,11 @@ cd $ffi_dir
 
 for key in ${!architectures[@]}
 do
-    rust_target=$key-linux-android
-    android_target=${architectures[$key]}
+    read -a value_array <<< "${architectures[$key]}"
+
+    rust_target=${value_array[0]}
+    android_target=${value_array[1]}
+
     lib_path=target/$rust_target/$mode/$lib_name
     lib_final_path=$sdk_dir/TapleSDK/src/main/jniLibs/$android_target
 
